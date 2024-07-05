@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.8.2 < 0.9.0;
+pragma solidity ^0.8.26;
 
 contract Q1 {
     /*
@@ -98,7 +98,7 @@ contract Q5 {
             return _a ** 2;
         }else if(_a >= 4 && _a <= 6){
             return _a * 2;
-        }else if(_a > 7 && _a <= 9){
+        }else if(_a >= 7 && _a <= 9){
             return _a % 3;
         }else{
             revert("no");
@@ -146,3 +146,60 @@ contract Q7 {
         return sum;
     }
 }
+
+contract Q8 {//
+    /*
+        아래의 함수를 만드세요
+        1~10을 입력하면 “A” 반환받습니다.
+        11~20을 입력하면 “B” 반환받습니다.
+        21~30을 입력하면 “C” 반환받습니다.
+    */
+
+    function getABC(uint _num) public pure returns(string memory) {
+
+        
+        if(_num >= 1 && _num <= 10){
+            return "A";
+        }else if(_num >= 11 && _num <= 20){
+            return "B";
+        }else if(_num >= 21 && _num <= 30){
+            return "C";
+        }else{
+            revert("no");
+        }
+
+    }
+
+}
+
+contract Q9 {//
+    /*
+        문자형을 입력하면 bytes 형으로 변환하여 반환하는 함수를 구현하세요.
+    */
+    function bytesChg(string memory str) public pure returns(bytes memory){
+        return bytes(str);
+    }
+}
+
+contract Q10 {
+    /*
+        숫자만 들어가는 array numbers를 선언하고 숫자를 넣고(push), 빼고(pop), 특정 n번째 요소의 값을 볼 수 있는(get)함수를 구현하세요.
+    */
+
+    uint[] numbers;
+
+    function pushArr(uint _a) public {
+        numbers.push(_a);
+    }
+
+    function popArr() public {
+        numbers.pop();
+    }
+
+    function getArr(uint n) public view returns(uint) {
+        require(n > 0);
+        return numbers[n-1];
+    }
+
+}
+
