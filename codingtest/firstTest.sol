@@ -29,11 +29,11 @@ contract EX_TEST {
         
         string memory _grade;
 
-        if(_score <= 90){
+        if(_score >= 90){
             _grade = "A";
-        }else if(_score <=80){
+        }else if(_score >=80){
             _grade = "B";
-        }else if(_score <=70){
+        }else if(_score >=70){
             _grade = "C";
         }else{
             _grade = "F";
@@ -46,12 +46,12 @@ contract EX_TEST {
         
         for(uint i = 0; i < students.length; i++){
 
-
             if(students[i].number == _number){
-                return students[i - 1];
+                return students[i];
             }
         }
-
+        
+        revert("404");
     }
 
 
