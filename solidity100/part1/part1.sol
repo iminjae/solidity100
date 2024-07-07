@@ -6,26 +6,24 @@ contract Q1 {
     /*
     더하기, 빼기, 곱하기, 나누기 그리고 제곱을 반환받는 계산기를 만드세요.
     */
-    uint a;
-    uint b;
 
-    function add() public view returns(uint) {
+    function add(uint a, uint b) public pure returns(uint) {
         return  a + b;
     }
 
-    function sub() public view returns(uint) {
+    function sub(uint a, uint b) public pure returns(uint) {
         return  a - b;
     }
 
-    function mul() public view returns(uint) {
+    function mul(uint a, uint b) public pure returns(uint) {
         return  a * b;
     }
 
-    function div() public view returns(uint) {
+    function div(uint a, uint b) public pure returns(uint) {
         return  a / b;
     }
 
-    function pow() public view returns(uint) {
+    function pow(uint a, uint b) public pure returns(uint) {
         return  a ** b;
     }
 }
