@@ -147,15 +147,22 @@ contract TEST1 {
     }
 
     //보충반 조회 기능
-    function getFStudents() public view returns(uint, Student[] memory)  {
+    function getFStudents() public view returns(uint, Student[] memory)  { //수정
         
         uint cnt;
-        Student[] memory arr = new Student[](students.length);//
-
 
         for(uint i = 0; i < students.length; i++){
-            if(keccak256(abi.encodePacked(students[i].grade)) == "F"){
+            if(keccak256(abi.encodePacked(students[i].grade)) == keccak256(abi.encodePacked("F"))){
+
                 cnt ++;
+            }
+        }
+
+        Student[] memory arr = new Student[](cnt);
+
+        for(uint i = 0; i < students.length; i++){
+            if(keccak256(abi.encodePacked(students[i].grade)) == keccak256(abi.encodePacked("F"))){
+
                 arr[i] = students[i];
             }
         }
