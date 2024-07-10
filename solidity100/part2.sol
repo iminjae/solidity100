@@ -149,7 +149,7 @@ contract Q18 {
     
 }
 
-contract Q19 {
+contract Q19 {//1차수정
     /*
         숫자를 넣으면 2배를 반환해주는 함수를 구현하세요.
         단 숫자는 1000이상 넘으면 함수를 실행시키지 못하게 합니다.
@@ -158,7 +158,7 @@ contract Q19 {
     function q(uint _num) public pure returns(uint) {
 
         if(_num < 1000){
-            return _num**2;
+            return _num*2;
         }else {
             revert("1000");
         }
@@ -180,7 +180,7 @@ contract Q20 {
 
     function setNumber2(uint _num) public {
 
-        numbers.push(_num);
+        setNumber(_num);
 
         for(uint i = 0; i < numbers.length; i++){
             if(numbers.length == 15 && (i + 1) % 3 == 0){
