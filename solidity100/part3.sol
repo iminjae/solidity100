@@ -146,7 +146,7 @@ contract Q29 {
     }
 }
 
-contract Q30 {//버블 정렬 알고리즘 참고
+contract Q30 {
     /*
         10. 임의대로 숫자를 넣으면 알아서 내림차순으로 정렬해주는 함수를 구현하세요
         (sorting 코드 응용 → 약간 까다로움)
@@ -160,14 +160,10 @@ contract Q30 {//버블 정렬 알고리즘 참고
 
         numbers.push(_num);
 
-         for(uint i = 0; i < numbers.length; i++){
-            
-            for (uint j = 0; j < numbers.length - 1 - i; j++) {
-                if (numbers[j] < numbers[j + 1]) {
-                
-                    uint temp = numbers[j];
-                    numbers[j] = numbers[j + 1];
-                    numbers[j + 1] = temp;
+        for(uint i = 0; i < numbers.length; i++) {
+            for(uint j = i + 1; j < numbers.length; j++) {
+                if(numbers[i] < numbers[j]) {
+                    (numbers[i], numbers[j]) = (numbers[j], numbers[i]);
                 }
             }
         }
