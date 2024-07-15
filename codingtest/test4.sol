@@ -43,7 +43,7 @@ contract TEST4 {
     }
 
     User[] users;
-    
+    User[4] room;
 
 
     // [1,"test1",0x5B38Da6a701c568545dCfcB03FcB875f56beddC4,99989999999990540580,0]
@@ -56,7 +56,7 @@ contract TEST4 {
     //방 입장
     function game(User memory _user) public payable {
 
-        User[4] memory room;
+       
         uint index;
 
 
