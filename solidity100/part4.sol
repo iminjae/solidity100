@@ -89,23 +89,17 @@ contract Q34 {
     // }
 }
 
-contract Q35 {
+contract Q35 {//2차
     /*
         5. 숫자만 들어갈 수 있는 array를 선언하고 해당 array의 짝수번째 요소만 모아서 반환하는 함수를 구현하세요.
         예) [1,2,3,4,5,6] -> [2,4,6] // [3,5,7,9,11,13] -> [5,9,13]
     */
 
-    uint[] public arr;
-
     function getArr(uint[] memory _arr) public pure returns(uint[] memory) {
         
-        uint cnt = 0;
+        uint cnt = _arr.length / 2;
 
-        for(uint i = 0; i < _arr.length; i++){
-            if(i % 2 == 1){
-                cnt ++;
-            }
-        }
+       
 
         uint[] memory resultArr = new uint[](cnt);
         uint resultCnt = 0;
@@ -145,7 +139,7 @@ contract Q36 {
     }
 }
 
-contract Q37 {
+contract Q37 {//2차
     /*
         1 wei를 기부하는 기능, 1finney를 기부하는 기능 그리고 1 ether를 기부하는 기능을 구현하세요.
         최초의 배포자만이 해당 smart contract에서 자금을 회수할 수 있고 다른 이들은 못하게 막는 함수도 구현하세요.
@@ -163,8 +157,7 @@ contract Q37 {
     }
 
     function donateFinney() public payable {
-        // require(msg.value == 1 finney, "1 finney");
-        require(msg.value == 10**18 wei, "1 finney");
+        require(msg.value == 0.001 ether, "1 finney");
     }
 
     function donateEther() public payable {
@@ -211,23 +204,81 @@ contract Q38 {
     }
 }
 
-contract Q39 {//2차때 제출예정
+contract Q39 {//2차
     /*
         9. 특정 숫자의 자릿수까지의 2의 배수, 3의 배수, 5의 배수 7의 배수의 개수를 반환해주는 함수를 구현하세요.
         예) 15 : 7,5,3,2  (2의 배수 7개, 3의 배수 5개, 5의 배수 3개, 7의 배수 2개) 
            100 : 50,33,20,14  (2의 배수 50개, 3의 배수 33개, 5의 배수 20개, 7의 배수 14개)
     */
+    
+    function test(uint _num) public pure returns(uint, uint, uint, uint) {
 
+        //    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+        //      2,  4,  6,  8,  10,   12,   14
 
+        uint two = 0;
+        uint three = 0;
+        uint five = 0;
+        uint seven = 0;
+
+        for(uint i = 1; i <= _num; i++){
+
+            if(i % 2 == 0){
+                two ++;
+            }
+
+            if(i % 3 == 0){
+                three ++;
+            }
+
+            if(i % 5 == 0){
+                five ++;
+            }
+
+            if(i % 7 == 0){
+                seven ++;
+            }
+        }
+
+        return (two, three, five, seven);
+    }
 }
 
-contract Q40 {//2차때 제출예정
+contract Q40 {//2차
     /*
         10. 숫자를 임의로 넣었을 때 내림차순으로 정렬하고 가장 가운데 있는 숫자를 반환하는 함수를 구현하세요. 가장 가운데가 없다면 가운데 2개 숫자를 반환하세요.
         예) [5,2,4,7,1] -> [1,2,4,5,7], 4 // [1,5,4,9,6,3,2,11] -> [1,2,3,4,5,6,9,11], 4,5 // [6,3,1,4,9,7,8] -> [1,3,4,6,7,8,9], 6
     */
 
+    function desc(uint[] memory _arr) public pure returns(uint[] memory) {
+
+        for(uint i = 0; i < _arr.length; i++) {
+            for(uint j=i+1; j<_arr.length; j++) {
+                if(_arr[i] < _arr[j]) {
+                    (_arr[i], _arr[j]) = (_arr[j], _arr[i]);
+                }
+            }
+        }
+
+        return _arr;
+    }
+    
+    function test(uint[] memory _arr) public pure returns(uint, uint){
+
+        uint[] memory descArr = desc(_arr);
+        uint index = descArr.length / 2;
+
+
+        if(descArr.length % 2 == 0){
+
+            return (descArr[index], descArr[index - 1]);
+
+        }else {
+            
+            return (descArr[index], 0);
+        }
+        
+    }
 
 
 }
-
