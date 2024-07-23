@@ -19,10 +19,20 @@ contract TEST5 {
         uint hour = _num / 3600;
         uint min = (_num % 3600) / 60;
         uint sec = _num % 60;
+    
 
+        return string(abi.encodePacked(Strings.toString(hour), "hour ", Strings.toString(min), "min ", Strings.toString(sec), "sec"));
+    }
 
-        return string(abi.encodePacked(Strings.toString(hour), "hour", Strings.toString(min), "min", Strings.toString(sec), "sec"));
+    function time2(uint _num) public pure returns(string memory) {
+        
 
+        uint hour = _num / 3600;
+        uint min = (_num % 3600) / 60;
+        uint sec = _num % 60;
+    
+
+        return string(abi.encodePacked(Strings.toString(hour), unicode"시 ", Strings.toString(min), unicode"분 ", Strings.toString(sec), unicode"초"));
     }
 
 }

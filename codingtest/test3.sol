@@ -72,12 +72,6 @@ contract TEST3 {
             revert("wrong pw");
         }
         
-        
     }
-
-
-
-
-
 
 }
