@@ -16,41 +16,54 @@ contract Name {
     function uintLength(uint _num) public pure returns(uint, uint[] memory) {
         
         uint length = 0;
+        uint temp_n = _num;
 
-        while (_num != 0) {
+        while (temp_n != 0) {
             length++;
-            _num /= 10;
+            temp_n /= 10;
         }
 
         uint[] memory arr = new uint[](length);
+        uint originLength = length;
 
-        for(uint i = 0; i < length; i++){
+        while(_num != 0){
 
-            
+            arr[--length] = _num % 10;
+            _num /= 10;
         }
 
-
-        return (length, arr);
-
+        return (originLength, arr);
     }
 
 
     //문자열을 넣었을 때 그 문자열의 자릿수와 문자열을 한 글자씩 분리한 결과를 반환하세요.
     function strLength(string memory _str) public pure returns(uint, string[] memory){
 
-        bytes memory strToBytes = bytes(_str);
-        string[] memory arr = new string[](strToBytes.length);
+        // bytes memory strToBytes = bytes(_str);
+        // string[] memory arr = new string[](strToBytes.length);
 
-        for(uint i = 0; i < strToBytes.length; i++){
+        // for(uint i = 0; i < strToBytes.length; i++){
 
-            bytes memory char = new bytes(1);
+        //     bytes memory char = new bytes(1);
 
-            char[0] = strToBytes[i];
-            arr[i] = string(char);
+        //     char[0] = strToBytes[i];
+        //     arr[i] = string(char);
+        // }
+
+        // return (strToBytes.length, arr);
+
+        uint _length = bytes(_str).length;
+        string[] memory _letters = new string[](_length);
+
+        bytes1[] memory _b = new bytes1[](_length);
+
+        for(uint i = 0; i < _length; i++){
+
+            _b[i] = bytes(_str)[i];
+            _letters[i] = string(abi.encodePacked(_b[i]));
         }
 
-
-        return (strToBytes.length, arr);
+        return (_length, _letters);
     }
 
 }
