@@ -99,8 +99,6 @@ contract Q35 {//2차
         
         uint cnt = _arr.length / 2;
 
-       
-
         uint[] memory resultArr = new uint[](cnt);
         uint resultCnt = 0;
 
@@ -211,11 +209,8 @@ contract Q39 {//2차
            100 : 50,33,20,14  (2의 배수 50개, 3의 배수 33개, 5의 배수 20개, 7의 배수 14개)
     */
     
-    function test(uint _num) public pure returns(uint, uint, uint, uint) {
 
-        //    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
-        //      2,  4,  6,  8,  10,   12,   14
-
+    /*
         uint two = 0;
         uint three = 0;
         uint five = 0;
@@ -241,6 +236,11 @@ contract Q39 {//2차
         }
 
         return (two, three, five, seven);
+    */
+
+
+    function chk(uint number) public pure returns (uint, uint, uint, uint) {
+        return (number / 2, number / 3, number / 5, number / 7);
     }
 }
 
@@ -262,23 +262,38 @@ contract Q40 {//2차
 
         return _arr;
     }
-    
-    function test(uint[] memory _arr) public pure returns(uint, uint){
 
-        uint[] memory descArr = desc(_arr);
-        uint index = descArr.length / 2;
+    /*
+        function test(uint[] memory _arr) public pure returns(uint, uint){
+
+            uint[] memory descArr = desc(_arr);
+            uint index = descArr.length / 2;
 
 
-        if(descArr.length % 2 == 0){
+            if(descArr.length % 2 == 0){
 
-            return (descArr[index], descArr[index - 1]);
+                return (descArr[index], descArr[index - 1]);
 
-        }else {
+            }else {
+
+                return (descArr[index], 0);
+            }
             
-            return (descArr[index], 0);
         }
-        
+    */
+
+    function getMedian(uint[] memory _a) public pure returns(uint[] memory) {
+        _a = desc(_a);
+
+        uint[] memory median = new uint[](2 - _a.length % 2);
+
+        if(median.length == 1){
+            median[0] = _a[_a.length / 2];
+        }else {
+            median[0] = _a[_a.length / 2 - 1];
+            median[1] = _a[_a.length / 2];
+        }
+
+        return median;
     }
-
-
 }
