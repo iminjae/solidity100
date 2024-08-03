@@ -86,6 +86,9 @@ contract Q73 {
     function withdraw(uint amount) public {
         require(owner == msg.sender, "only owner");
         require(amount <= address(this).balance, "check balance");
+        require(amount <= account[msg.sender], "check balance");
+
+        account[msg.sender] -= amount;
 
         payable(owner).transfer(amount);
     }
