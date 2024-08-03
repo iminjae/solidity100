@@ -47,7 +47,13 @@ contract Q63 {
     */
 
     function sub(uint a, uint b) public pure returns(uint) {
-        return a - b;
+
+        if(a > b){
+            return a - b;
+        }else {
+            return b - a;
+        }
+
     }
 }
 
@@ -98,9 +104,36 @@ contract Q66 {
 
     function A(uint a)public pure returns(uint) {
 
-         bytes memory numberString = abi.encodePacked(a);
+        uint count = 0;
+        uint num = a;
+        
+        if (num == 0) {
+            return 1;
+        }
+        
+        while (num != 0) {
+            count++;
+            num /= 10;
+        }
+        
+        return count;
+    }
 
-        return numberString.length;
+    function B(uint a) public pure returns (uint) {
+
+        uint count = 0;
+        uint num = a;
+        
+        if (num == 0) {
+            return 1;
+        }
+        
+        while (num != 0) {
+            count++;
+            num /= 5;
+        }
+        
+        return count;
     }
 }
 
